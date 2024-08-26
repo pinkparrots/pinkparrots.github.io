@@ -27,6 +27,25 @@
     color: transparent;
 }
 
+.discordlogo {
+    position: absolute;
+    width: 30px;
+    left: 140px;
+    top: 660px;
+}
+
+.discordlogo img {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.discordlogo img:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+
+
 .sub-title {
     position: absolute;
     font-size: 30px;
