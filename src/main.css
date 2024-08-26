@@ -10,27 +10,31 @@ p {
     cursor: default;
 }
 
+.no-constax-mobile {
+    display: none;
+}
+
 .background {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Wanted Sans Variable';
     background-color: #222222;
-    background-size: 100% auto; 
+    background-size: cover; 
     background-image : url('img/back.png');
 }
 
 .icon {
     position: relative;
     left: 117px;
-    top: 362px;
+    top: 300px;
     background: transparent;
 }
 
 .title {
     position: absolute;
     left: 140px;
-    top: 478px;
+    top: 390px;
     font-size: 50px;
     font-weight: 700;
     background: linear-gradient(90deg, #ff55e9, #fd90ff);
@@ -43,7 +47,7 @@ p {
     position: absolute;
     width: 30px;
     left: 140px;
-    top: 675px;
+    top: 580px;
 }
 
 .discordlogo img {
@@ -62,8 +66,66 @@ p {
     font-weight: 500;
     color: white;
     left: 140px;
-    top: 565px;
+    top: 470px;
     background: transparent;
+}
+
+@media screen and (max-width: 767px) {
+    .constax-side {
+        display: none;
+    }
+
+    .no-constax-mobile {
+        display:flex;
+    }
+
+    .title {
+        position: absolute;
+        left: 140px;
+        top: 350px;
+        font-size: 30px;
+        font-weight: 700;
+        background: linear-gradient(90deg, #ff55e9, #fd90ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .icon {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        left: 125px;
+        top: 300px;
+        background: transparent;
+    }
+
+    .sub-title {
+        position: absolute;
+        font-size: 20px;
+        font-weight: 500;
+        color: white;
+        left: 140px;
+        top: 400px;
+        background: transparent;
+    }
+    
+    .discordlogo {
+        position: absolute;
+        width: 30px;
+        left: 140px;
+        top: 475px;
+    }
+    
+    .discordlogo img {
+        width: 100%;
+        transition: transform 0.3s ease;
+    }
+    
+    .discordlogo img:hover {
+        transform: scale(0.9);
+        cursor: pointer;
+    }
 }
 
 .constax-side {
