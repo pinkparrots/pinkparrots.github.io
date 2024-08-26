@@ -6,8 +6,10 @@
     box-sizing: border-box;
     font-family: 'Wanted Sans Variable';
     background-color: #222222;
+    background-size: 100% auto; 
     background-image : url('img/back.png');
 }
+
 .icon {
     position: relative;
     left: 117px;
@@ -35,4 +37,11 @@
     left: 140px;
     top: 565px;
     background: transparent;
+}
+
+.constax-side {
+    position:absolute;
+    background: transparent;
+    left: 910px;
+    top: 100px;
 }
