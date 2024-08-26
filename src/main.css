@@ -46,8 +46,6 @@
     cursor: pointer;
 }
 
-
-
 .sub-title {
     position: absolute;
     font-size: 30px;
@@ -62,5 +60,12 @@
     position:absolute;
     background: transparent;
     left: 910px;
-    top: 100px;
+    top: 230px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.constax-side:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
