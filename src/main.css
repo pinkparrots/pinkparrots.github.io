@@ -1,6 +1,16 @@
 @import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
 
-* {
+body {
+    user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+}
+
+p {
+    cursor: default;
+}
+
+.background {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -33,7 +43,7 @@
     position: absolute;
     width: 30px;
     left: 140px;
-    top: 660px;
+    top: 675px;
 }
 
 .discordlogo img {
@@ -45,8 +55,6 @@
     transform: scale(0.9);
     cursor: pointer;
 }
-
-
 
 .sub-title {
     position: absolute;
