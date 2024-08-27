@@ -10,27 +10,31 @@ p {
     cursor: default;
 }
 
+.no-constax-mobile {
+    display: none;
+}
+
 .background {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Wanted Sans Variable';
     background-color: #222222;
-    background-size: 100% auto; 
+    background-size: cover; 
     background-image : url('img/back.png');
 }
 
 .icon {
     position: relative;
     left: 117px;
-    top: 362px;
+    top: 300px;
     background: transparent;
 }
 
 .title {
     position: absolute;
     left: 140px;
-    top: 478px;
+    top: 390px;
     font-size: 50px;
     font-weight: 700;
     background: linear-gradient(90deg, #ff55e9, #fd90ff);
@@ -43,7 +47,7 @@ p {
     position: absolute;
     width: 30px;
     left: 140px;
-    top: 675px;
+    top: 580px;
 }
 
 .discordlogo img {
@@ -62,21 +66,182 @@ p {
     font-weight: 500;
     color: white;
     left: 140px;
-    top: 565px;
+    top: 470px;
     background: transparent;
+}
+
+@media screen and (max-width: 767px) {
+    .constax-side {
+        display: none;
+    }
+
+    .no-constax-mobile {
+        display:flex;
+        color: white;
+        left: 140px;
+    }
+
+    .title {
+        position: absolute;
+        left: 140px;
+        top: 350px;
+        font-size: 30px;
+        font-weight: 700;
+        background: linear-gradient(90deg, #ff55e9, #fd90ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .icon {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        left: 125px;
+        top: 300px;
+        background: transparent;
+    }
+
+    .sub-title {
+        position: absolute;
+        font-size: 20px;
+        font-weight: 500;
+        color: white;
+        left: 140px;
+        top: 400px;
+        background: transparent;
+    }
+    
+    .discordlogo {
+        position: absolute;
+        width: 30px;
+        left: 140px;
+        top: 475px;
+    }
+    
+    .discordlogo img {
+        width: 100%;
+        transition: transform 0.3s ease;
+    }
+    
+    .discordlogo img:hover {
+        transform: scale(0.9);
+        cursor: pointer;
+    }
 }
 
 .constax-side {
     position:absolute;
     background: transparent;
     left: 910px;
-    top: 230px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    top: 175px;
 }
 
-.constax-side:hover {
-    transform: translateY(-10px);
+.button-get-web {
+    appearance: none;
+    background-color: #7bc5f7;
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button-get-web:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+  }
+  
+  .button-get-web:hover {
+    background-color: #639ec5;
+    transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+  }
+  
+  .button-get-web:focus {
+    box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+    outline: none;
+  }
+  
+  .button-get-web:disabled {
+    background-color: #7bc5f7;
+    border-color: rgba(27, 31, 35, .1);
+    color: rgba(255, 255, 255, .8);
+    cursor: default;
+  }
+  
+  .button-get-web:active {
+    background-color: #298e46;
+    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+  }
+
+.button-connect-server {
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-connect-server:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-connect-server:hover {
+  background-color: #2c974b;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.button-connect-server:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-connect-server:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.button-connect-server:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
