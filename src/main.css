@@ -4,6 +4,8 @@ body {
     user-select: none; 
     -webkit-user-select: none; 
     -ms-user-select: none; 
+    max-width: 800px;
+    width: 100%;
 }
 
 p {
