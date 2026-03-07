@@ -17,10 +17,44 @@
         body {
             font-family: 'Wanted Sans', sans-serif;
             background: url('src/back.png') no-repeat center center;
+            background-color: #0f0f16;
             background-size: cover;
             background-attachment: fixed;
             color: #e0e0e0;
+            margin: 0;
+            overflow-x: hidden;
         }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            opacity: 0;
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
 
         .card-container::-webkit-scrollbar {
             height: 8px;
@@ -36,7 +70,7 @@
         }
 
         .card-container:hover::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
         }
         
         .card-container:hover::-webkit-scrollbar-thumb {
@@ -54,39 +88,58 @@
         }
 
         .card-container:hover {
-            scrollbar-color: #ec4899 rgba(255, 255, 255, 0.1);
+            scrollbar-color: #ec4899 rgba(255, 255, 255, 0.05);
         }
-        /* --- End of scrollbar styles --- */
-
 
         .card {
-            background: rgba(30, 30, 46, 0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: background 0.3s ease;
+            background: rgba(20, 20, 32, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 85, 233, 0.3);
         }
 
         .btn {
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        .btn:active {
+            transform: scale(0.97);
         }
 
         .btn-primary {
-            background-color: #4a5568;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
         }
+        
         .btn-primary:hover {
-            background-color: #2d3748;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 85, 233, 0.5);
+            box-shadow: 0 0 15px rgba(255, 85, 233, 0.15);
         }
 
         .btn-secondary {
-            background-color: #38a169;
+            background: linear-gradient(135deg, #ff55e9, #fd90ff);
+            color: #1a1a24;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 85, 233, 0.3);
         }
+        
         .btn-secondary:hover {
-            background-color: #2f855a;
+            box-shadow: 0 6px 25px rgba(255, 85, 233, 0.5);
+            filter: brightness(1.05);
         }
 
         .text-gradient {
@@ -97,48 +150,97 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8">
-    <main class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8 relative">
+    
+    <canvas id="particles"></canvas>
+
+    <main class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center z-10">
         <div class="text-center lg:text-left">
             <img src="src/favicon.png" 
                  alt="Pink Parrots Logo" 
-                 class="w-24 h-24 mb-4 mx-auto lg:mx-0"
+                 class="w-24 h-24 mb-4 mx-auto lg:mx-0 animate-fade-up"
                  onerror="this.onerror=null;this.src='https://placehold.co/100x100/ec4899/ffffff?text=Logo';"
             >
             
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-gradient">Pink Parrots</h1>
-            <p class="text-lg text-gray-300 mb-6">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-gradient animate-fade-up delay-100">Pink Parrots</h1>
+            <p class="text-lg text-gray-300 mb-6 animate-fade-up delay-200">
                 모두가 즐길수 있는<br>마인크래프트 서버를 위해
             </p>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+            <a href="#" class="inline-block text-gray-400 hover:text-[#ff55e9] transition-colors duration-300 animate-fade-up delay-300">
                 <i class="fab fa-discord fa-2x"></i>
             </a>
         </div>
-        <div class="w-full">
+        <div class="w-full animate-fade-up delay-400">
             <div class="card-container flex overflow-x-auto space-x-6 pb-4">
             
-                <div class="card flex-shrink-0 w-72 rounded-xl p-6 text-center">
-                    <h2 class="text-2xl font-bold mb-2">ConstaX</h2>
-                    <p class="text-gray-400 mb-8 h-12">하드코어한 경쟁을 즐기는 당신에게.</p>
+                <div class="card flex-shrink-0 w-72 rounded-2xl p-6 text-center">
+                    <h2 class="text-2xl font-bold mb-2 text-white">ConstaX</h2>
+                    <p class="text-gray-400 mb-8 h-12 text-sm leading-relaxed">하드코어한 경쟁을 즐기는 당신에게.</p>
                     <div class="space-y-3">
-                        <button class="btn btn-primary w-full py-2 rounded-lg font-semibold">전적 확인하기</button>
-                        <button class="btn btn-secondary join-btn w-full py-2 rounded-lg font-semibold" data-url="constax.pkps.kro.kr">서버 접속하기</button>
+                        <button class="btn btn-primary w-full py-2.5 rounded-xl font-medium tracking-wide">전적 확인하기</button>
+                        <button class="btn btn-secondary join-btn w-full py-2.5 rounded-xl font-bold tracking-wide" data-url="constax.pkps.kro.kr">서버 접속하기</button>
                     </div>
                 </div>
 
-                    <div class="card flex-shrink-0 w-72 rounded-xl p-6 text-center">
-                        <h2 class="text-2xl font-bold mb-2">Ast.</h2>
-                        <p class="text-gray-400 mb-8 h-12">스토리 몰입형 최신 버전 RPG 서버.</p>
-                        <div class="space-y-3">
-                            <button class="btn btn-primary w-full py-2 rounded-lg font-semibold">정보 확인하기</button>
-                            <button class="btn btn-secondary join-btn w-full py-2 rounded-lg font-semibold" data-url="AST IS NOT AVAILABLE">서버 접속하기</button>
-                        </div>
+                <div class="card flex-shrink-0 w-72 rounded-2xl p-6 text-center">
+                    <h2 class="text-2xl font-bold mb-2 text-white">Ast.</h2>
+                    <p class="text-gray-400 mb-8 h-12 text-sm leading-relaxed">스토리 몰입형 최신 버전 RPG 서버.</p>
+                    <div class="space-y-3">
+                        <button class="btn btn-primary w-full py-2.5 rounded-xl font-medium tracking-wide">정보 확인하기</button>
+                        <button class="btn btn-secondary join-btn w-full py-2.5 rounded-xl font-bold tracking-wide" data-url="AST IS NOT AVAILABLE">서버 접속하기</button>
                     </div>
+                </div>
             </div>
         </div>
     </main>
 
     <script>
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles;
+
+        function initParticles() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles = [];
+            
+            const particleCount = Math.floor((width * height) / 15000);
+            
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: Math.random() * 2 + 0.5,
+                    dx: (Math.random() - 0.5) * 0.4,
+                    dy: (Math.random() - 0.5) * 0.4,
+                    opacity: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, width, height);
+            
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 85, 233, ${p.opacity})`;
+                ctx.fill();
+                
+                p.x += p.dx;
+                p.y += p.dy;
+                
+                if (p.x < 0 || p.x > width) p.dx *= -1;
+                if (p.y < 0 || p.y > height) p.dy *= -1;
+            });
+            
+            requestAnimationFrame(drawParticles);
+        }
+
+        window.addEventListener('resize', initParticles);
+        initParticles();
+        drawParticles();
+
         const joinButtons = document.querySelectorAll('.join-btn');
 
         function copyToClipboard(text) {
@@ -151,9 +253,7 @@
             textarea.select();
             try {
                 document.execCommand('copy');
-            } catch (err) {
-                console.error('failed to copy!!', err);
-            }
+            } catch (err) {}
             document.body.removeChild(textarea);
         }
 
